@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+   
+  <!-- Custom fonts for this template -->,
+  <!--<link href="../../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+ 
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="../../assets/css/sb-admin-2.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this page -->
+  <link href="../../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+  <!--Button Icon-->
+  <link href="  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <style>
+.btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 12px;background: rgba(0,0,0,0.15);border-radius: 3px 0 0 3px;}
+.btn-labeled {padding-top: 0;padding-bottom: 0;}
+.btn { margin-bottom:10px; }
+.vertical-menu {
+  width: 482px;
+  height: 500px;
+  overflow-y: auto;
+}
+
+  </style>
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Kullanıcı(Öğrenci) Bilgileri</h1>
+          <p class="mb-4">Mevcut kayıtları düzenleyebilir veya yenilerini ekleyebilirsiniz.</p>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Kullanıcılar</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive" >
+                <table class="table table-bordered" id="dataTable" >
+                  <thead>
+                    <tr>
+                      <th>Ad-Soyad</th>
+                      <th>Kullanıcı Adı</th>
+                      <th>Tc No</th>
+                      <th>Mail</th>
+                      <th>Telefon Numarası</th>
+                      <th>Adres</th>    
+                      <th></th>                      
+                    </tr>
+                  </thead>
+                  <tfoot>                 
+                    <tr>               
+                        <th>
+                            <div>
+                                <button  class="btn btn-success btn-sm" data-target = "#insertModal" data-toggle = "modal">
+                                    <i class="fa fa-plus"></i> 
+                                </button>  
+                              </div>
+                        </th>
+                    </tr>
+                  </tfoot>
+                  <tbody>   
+                    <tr *ngFor='let data of data$ '>
+                      <td>{{data.nameSurname}}</td>
+                      <td>{{data.username}}</td>
+                      <td>{{data.identityNumber}}</td>
+                      <td>{{data.mail}}</td>
+                      <td>{{data.phone}}</td>
+                      <td>{{data.address}}</td>
+                      <td> 
+                          <a (click)="delete(data.id)"  class="btn btn-danger btn-custom btn-sm btn-circle">
+                              <i class="fas fa-trash text-white"></i>
+                          </a>                     
+                          <a [routerLink]="['/user-student/update/', data.id]">                       
+                              <button type="button" class="btn btn-primary btn-custom btn-sm btn-circle" >
+                                  <i class="fas fa-edit"></i>
+                              </button> 
+                          </a>
+                      </td>                                                 
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2019</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+   <!-- Insert Popup--> 
+   <div class = "modal fade" data-keyboard="false" data-backdrop="static" id = "insertModal" tabindex="-1" >
+      <div class = "modal-dialog"> 
+        <div class = "modal-content">
+          <div class = "modal-header">
+            
+            <h6 class = "modal-title"><b>Kullanıcı(Öğrenci) Ekle</b></h6>
+          </div>
+          <div class = "modal-body">
+              <form (ngSubmit)="onSubmit()">            
+                  <div class="vertical-menu">
+                      <div >
+                        <form  (ngSubmit)="onSubmit()">
+                            <label for="name">İsim Soyisim:  </label>
+                          <input type="text"  placeholder="İsim Soyisim Giriniz" class="form-control" id="nameSurname"  [(ngModel)]="suser.nameSurname" name="nameSurname">                                                         
+                        </form>
+                      </div>
+                      <br>
+                      <div >
+                        <form  (ngSubmit)="onSubmit()">
+                            <label for="name">Kullanıcı Adı:  </label>
+                          <input type="text"  placeholder="Kullanıcı Adı Giriniz" class="form-control" id="username"  [(ngModel)]="suser.username" name="username">                                                         
+                        </form>
+                      </div>
+                      <br>
+                      <div >
+                        <form  (ngSubmit)="onSubmit()">
+                            <label for="name">T.C. Kimlik Numarası:  </label>
+                          <input type="text" placeholder="Kimlik Numarası Giriniz" class="form-control" id="identityNumber"  [(ngModel)]="suser.identityNumber" name="identityNumber">                                                         
+                        </form>
+                      </div>
+                      <br>
+                      <div >
+                        <form  (ngSubmit)="onSubmit()">
+                            <label for="name">Mail Adresi:  </label>
+                          <input type="text" placeholder="Mail Adresi Giriniz" class="form-control" id="mail"  [(ngModel)]="suser.mail" name="mail">                                                         
+                        </form>
+                      </div>
+                      <br>
+                      <div >
+                        <form  (ngSubmit)="onSubmit()">
+                            <label for="name">Telefon Numarası:  </label>
+                          <input type="text"  placeholder="Telefon Numarası Giriniz" class="form-control" id="phone"  [(ngModel)]="suser.phone" name="phone">                                                         
+                        </form>
+                      </div>
+                      <br>
+                    <div >
+                      <form  (ngSubmit)="onSubmit()">
+                          <label for="name">Adres:  </label>
+                        <input type="text" placeholder="Adres Bilglerini Giriniz" class="form-control" id="address"  [(ngModel)]="suser.address" name="address">                                                         
+                      </form>
+                    </div>
+                    <br>
+                      <div>
+                        <form  (ngSubmit)="onSubmit()">                 
+                          <select   class="custom-select" [formControl]="sampleform.controls['suser']" (change)="selectChangeCity($event)">
+                            <option [ngValue]="null" disabled>Şehir Seçiniz</option>
+                            <option *ngFor="let city of city$ "  [ngValue]="city" >{{city.name}}</option>
+                          </select>
+                        </form> 
+                      </div> 
+                      <br>
+                    <div>
+                      <form  (ngSubmit)="onSubmit()">                 
+                        <select   class="custom-select" [formControl]="sampleform.controls['suser']" (change)="selectChangeDistrict($event)">
+                          <option [ngValue]="null" disabled>İlçe Seçiniz</option>
+                          <option *ngFor="let i of districtFiltered$"  [ngValue]="sdistrict" >{{i.name}}</option>    
+                        </select>
+                      </form> 
+                    </div> 
+                    <br>
+                    <div>
+                      <form  (ngSubmit)="onSubmit()">                 
+                        <select   class="custom-select" [formControl]="sampleform.controls['suser']" (change)="selectChangeNeighb($event)">
+                          <option [ngValue]="null" disabled>Mahalle Seçiniz</option>
+                          <option *ngFor="let neighborhood of neighbFiltered$"  [ngValue]="neighborhood" >{{neighborhood.name}}</option>
+                        </select>
+                      </form> 
+                    </div> 
+                  </div>
+                  <div class = "modal-footer" >
+                      <button type="submit" class="btn btn-success">
+                          <i class="fas fa-check"></i>
+                      </button>
+                      <button class="btn btn-danger" data-dismiss="modal">
+                          <i class="fa fa-close"></i>
+                      </button>
+                  </div>       
+                </form>
+          </div>           
+        </div>
+      </div>
+    </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../../assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../../src/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="../../assets/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="../../assets/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="../../assets/js/demo/datatables-demo.js"></script>
+
+</body>
+
+</html>

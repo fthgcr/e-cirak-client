@@ -1,0 +1,95 @@
+{
+    "/SCity/*":{
+        "target":"http://127.0.0.1:8883",
+        "secure":false,
+        "changeOrigin": true,
+        "loglevel":"debug"
+    },
+    "/SNeighborhood/*":{
+        "target":"http://127.0.0.1:8883",
+        "secure":false,
+        "changeOrigin": true,
+        "loglevel":"debug"
+    },
+    "/SDistrict/*":{
+        "target":"http://127.0.0.1:8883",
+        "secure":false,
+        "changeOrigin": true,
+        "loglevel":"debug"
+    },
+    "/School/*":{
+        "target":"http://127.0.0.1:8883",
+        "secure":false,
+        "changeOrigin": true,
+        "loglevel":"debug"
+    },
+    "/Company/*":{
+        "target":"http://127.0.0.1:8883",
+        "secure":false,
+        "changeOrigin": true,
+        "loglevel":"debug"
+    },
+    "/SUser/*":{
+        "target":"http://127.0.0.1:8883",
+        "secure":false,
+        "changeOrigin": true,
+        "loglevel":"debug"
+    },
+    "/Property/*":{
+        "target":"http://127.0.0.1:8883",
+        "secure":false,
+        "changeOrigin": true,
+        "loglevel":"debug"
+    },
+    "/StudentProp/*":{
+        "target":"http://127.0.0.1:8883",
+        "secure":false,
+        "changeOrigin": true,
+        "loglevel":"debug"
+    },
+    "/CompanyReq/*":{
+        "target":"http://127.0.0.1:8883",
+        "secure":false,
+        "changeOrigin": true,
+        "loglevel":"debug"
+    },
+    "/SpecialCase/*":{
+        "target":"http://127.0.0.1:8883",
+        "secure":false,
+        "changeOrigin": true,
+        "loglevel":"debug"
+    },
+    "/UserSpecialCase/*":{
+        "target":"http://127.0.0.1:8883",
+        "secure":false,
+        "changeOrigin": true,
+        "loglevel":"debug"
+    },
+    "/UserExperience/*":{
+        "target":"http://127.0.0.1:8883",
+        "secure":false,
+        "changeOrigin": true,
+        "loglevel":"debug"
+    },
+    "/SRole/*":{
+        "target":"http://127.0.0.1:8883",
+        "secure":false,
+        "changeOrigin": true,
+        "loglevel":"debug"
+    },
+    "/SUserRole/*":{
+        "target":"http://127.0.0.1:8883",
+        "secure":false,
+        "changeOrigin": true,
+        "loglevel":"debug"
+    },
+    "/SRolePermission/*":{
+        "target":"http://127.0.0.1:8883",
+        "secure":false,
+        "changeOrigin": true,
+        "loglevel":"debug"
+    }
+
+
+
+}
